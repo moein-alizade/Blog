@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+
+use App\Models\Article;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -17,7 +19,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/admin/articles';
 
     /**
      * The controller namespace for the application.
@@ -26,7 +28,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string|null
      */
-    // protected $namespace = 'App\\Http\\Controllers';
+    protected $namespace = 'App\\Http\\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -47,6 +49,15 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
         });
+
+        //برایش برگرداند function($value)  صدا زدی، این نتیجه را 'articleSlug' وقتی این را
+        Route::bind('articleSlug' , function($value) {
+            //     // dd($value);
+            //     // return Article::findOrFail($value);
+            //     return Article::where('slug', $value)->first();
+            return Article::where('slug', $value)->firstOrFail();
+        });
+
     }
 
     /**
