@@ -1,8 +1,8 @@
 <!-- farakhani master page -->
-@extends('layouts.master')
+@extends('layouts.master',['hide_sidebar' => true])
 
 @section('content')
-<div class="w-2/3 mx-auto">
+<div class="w-1/2 mx-auto">
     <h2 class="text-center pb-4 pt-3 text-red-500">Edit Article</h2>
 
 

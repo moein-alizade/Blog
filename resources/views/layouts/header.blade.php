@@ -2,19 +2,20 @@
     <div class="container mx-auto sm:px-4">
       <div class="flex row justify-end w-full" id="navbarResponsive">
           <div class="w-3/12">
-              <a class="text-lg text-blue-200" href="/">moein blog</a>
+              <a class="text-lg text-blue-200" href="/">Moein blog</a>
           </div>
           <div class="w-9/12">
               <ul class="flex flex-row-reverse">
+                  <li>
+                      <a class="inline-block py-2 px-4 no-underline" href="/registery">register</a>
+                  </li>
                   <li>
                       <a class="inline-block py-2 px-4 no-underline" href="/">home</a>
                   </li>
                   <li>
                       <a class="inline-block py-2 px-4 no-underline" href="/admin/articles">articles</a>
                   </li>
-                  <li>
-                      <a class="inline-block py-2 px-4 no-underline" href="/registery">register</a>
-                  </li>
+
                   <li>
                       <a class="inline-block py-2 px-4 no-underline" href="/about">about</a>
                   </li>
@@ -31,7 +32,7 @@
                   <button type="submit" class="w-10/12 bg-red-400 hover:bg-red-500 hover:border-red-500 border-red-400 border border-solid font-normal inline-block ml-2.5 my-2 no-underline px-2 rounded-lg text-center text-white">logout</button>
               </form>
           @else
-              <a href="{{ route('login') }}" class="w-1/13 bg-green-800 hover:bg-green-900 hover:border-green-900 border-green-800 border border-solid font-normal inline-block no-underline px-3 py-1.5 rounded-lg select-none text-center text-white">Login</a>
+              <a href="{{ route('login') }}" class="w-1/13 bg-green-800 hover:bg-green-900 hover:border-green-900 border-green-800 border border-solid font-normal inline-block no-underline px-3 py-1.5 rounded-lg select-none text-center text-white">login</a>
           @endif
 
 

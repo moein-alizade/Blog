@@ -1,9 +1,9 @@
-@extends('layouts.master')
+@extends('layouts.master',['hide_sidebar' => true])
 
 @section('content')
-<div class="container mx-auto sm:px-4">
+<div class="container mx-auto sm:px-4 pt-10 pb-44">
     <div class="flex w-full justify-center">
-        <div class="md:w-2/3 pr-4 pl-4 mt-14">
+        <div class="w-1/2 pr-4 pl-4 mt-14">
             <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
                 <div class="py-3 px-6 mb-0 bg-gray-200 border-b-1 border-gray-300 text-gray-900">{{ __('Login') }}</div>
 
@@ -43,8 +43,8 @@
                             </div>
                         </div>
 
-                        <div class="mb-4 flex w-full pl-20">
-                            <div class="relative block mb-2 pl-3">
+                        <div class="mb-4 flex w-full pl-28">
+                            <div class="relative block mb-2 pl-4">
                                 <input class="absolute mt-1.5 ml-1" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                 <label class="text-gray-700 mb-0 pl-6" for="remember">
@@ -53,7 +53,7 @@
                             </div>
                         </div>
 
-                        <div class="mb-4 flex w-full  mb-0">
+                        <div class="mb-4 flex w-full pl-9 mb-0">
                             <div class="w-full pl-20">
                                 <button type="submit" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 ml-4 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600">
                                     {{ __('Login') }}
