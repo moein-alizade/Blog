@@ -43,21 +43,21 @@ class UserRegisterController extends Controller
     {
         $data = $request->validate([
 //            نام کاربر باید حتما وارد بشود و فقط کاراکتر باشد
-            'name' => 'required|alpha',
+            'first_name' => 'required|alpha|min:3|max:50',
+            'last_name' => 'required|alpha|min:3|max:50',
 //            ایمیل کاربر باید حتما وارد بشود و ایمیل باشد و ایمیل کاربر یکتا یعنی تکرار نباشد
             'email' => 'required|email|unique:users,email',
 //            پسورد کاربر باید حتما وارد بشود
-            'password' => 'required',
+            'password' => 'required|required_with:password_confirmed|same:password_confirmed|min:6|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
 //            تایید پسورد حتما باید وارد بشود
-            'passwordconfirm' => 'required',
-
+            'password_confirmed' => 'required|min:6',
         ]);
 
 
 
 // نیست و داخل دیتابیس بصورت نامفهوم و هش شده نشان می دهد password رمز کاربر برابر با همان رمزی که خودشان وارد می کنند هست  و  برابر با
         $data['password'] = bcrypt($data['password']);
-
+        $data['password_confirmed'] = bcrypt($data['password']);
 
 //       می ریزد $user تمام اطلاعات کاربر ثبت نام شده را درون متغیر
         $user = \App\Models\User::create($data);

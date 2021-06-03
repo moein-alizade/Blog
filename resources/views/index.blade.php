@@ -23,7 +23,7 @@
 
     @endforeach
 
-    <div class="mx-72">
+    <div class="mx-64">
         {{--   آرتیکل ها که شماره بندی شدند را تبدیل به لینک می کند     --}}
         {{ $articles->links()  }}
     </div>

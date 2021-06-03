@@ -51,4 +51,3 @@ class CreateARelBetweenArticlesAndCategoriesTable extends Migration
         Schema::dropIfExists('article_category');
     }
 }
-

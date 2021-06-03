@@ -24,7 +24,7 @@
 
 
           @if(auth()->check())
-              <a href="/admin/articles" class="w-1/12 bg-blue-400 hover:bg-blue-500 hover:border-blue-500 border-blue-400 border border-solid  font-normal inline-block ml-1 no-underline rounded-lg select-none text-center text-white my-2">{{ auth()->user()->name }}</a>
+              <a href="/admin/articles" class="w-1/12 bg-blue-400 hover:bg-blue-500 hover:border-blue-500 border-blue-400 border border-solid  font-normal inline-block ml-1 no-underline rounded-lg select-none text-center text-white my-2">{{ auth()->user()->first_name }}</a>
       {{--   helper-function = route('')       --}}
               <form action="{{ route('logout') }}" method="post">
                   @csrf

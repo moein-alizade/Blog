@@ -22,29 +22,42 @@
 
             <div class="flex flex-col col-6 p-4">
                 <div class="mb-4">
-                    <label>Name :</label>
-                    <input type="text" name="name" class="block appearance-none w-full py-2 px-2 mt-2 text-base leading-normal bg-white text-gray-800 border border-gray-200 hover:text-blue-500 rounded hover:text-pink-600" id="name">
-                    @error('name')
+                    <label>* first name :</label>
+                    <input type="text" name="first_name" class="block appearance-none w-full py-2 px-2 mt-2 text-base leading-normal bg-white text-gray-800 border border-gray-200 hover:text-blue-500 rounded hover:text-pink-600" id="first_name" placeholder="3<characters<50">
+                    @error('first_name')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="mb-4">
+                    <label>* last name :</label>
+                    <input type="text" name="last_name" class="block appearance-none w-full py-2 px-2 mt-2 text-base leading-normal bg-white text-gray-800 border border-gray-200 hover:text-blue-500 rounded hover:text-pink-600" id="last_name" placeholder="3<characters<50">
+                    @error('last_name')
                         <span class="text-red-500">{{ $message }}</span>
                     @enderror
                 </div>
 
                 <div class="mb-4">
-                    <label>Email :</label>
-                    <input type="text" name="email" class="block appearance-none w-full py-2 px-2 mt-2 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded hover:text-pink-600" id="email">
+                    <label>* email :</label>
+                    <input type="text" name="email" class="block appearance-none w-full py-2 px-2 mt-2 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded hover:text-pink-600" id="email" placeholder="your_email@info.com">
                     @error('email')
                         <span class="text-red-500">{{  $message }}</span>
                     @enderror
                 </div>
 
                 <div class="mb-4">
-                    <label>Password :</label>
-                    <input type="password" name="password" class="block appearance-none w-full py-2 px-2 mt-2 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded hover:text-pink-600" id="password">
+                    <label>* password :</label>
+                    <input type="password" name="password" class="block appearance-none w-full py-2 px-2 mt-2 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded hover:text-pink-600" id="password" placeholder="[a-z]+[A-Z]+[0-9]+[~!@#$%%^&*()] & min=6">
+                    @error('password')
+                    <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="mb-4">
-                    <label>Confirm Password :</label>
-                    <input type="password" name="passwordconfirm" class="block appearance-none w-full py-2 px-2 mt-2 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded hover:text-pink-600" id="passwordconfirm">
+                    <label>* password_confirmed :</label>
+                    <input type="password" name="password_confirmed" class="block appearance-none w-full py-2 px-2 mt-2 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded hover:text-pink-600" id="password_confirmed" placeholder="repeat password">
+                    @error('password_confirmed')
+                    <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
 
 
