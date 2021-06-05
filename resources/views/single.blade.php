@@ -6,7 +6,9 @@
     <!-- Blog Post -->
 
         <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 mb-4">
-            <img class="w-full rounded rounded-t" src="http://placehold.it/750x300" alt="Card image cap">
+{{--            <img class="w-full rounded rounded-t" src="http://placehold.it/750x300" alt="Card image cap">--}}
+{{--            asset()   =   شروع بشود ازش استفاده می کنیم public هر چیزی که از پوشه ی   --}}
+            <img class="w-full rounded rounded-t" src="{{ isset($article->image) ? asset($article->image) : asset('/image/default.jpeg') }}" alt="Card image cap">
             <div class="flex-auto p-6">
                 {{-- نمایش دادن عنوان آرتیکل--}}
                 <h2 class="mb-3">{{ $article->title }}</h2>

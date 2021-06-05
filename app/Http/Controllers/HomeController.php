@@ -167,6 +167,7 @@ class HomeController extends Controller
         // return view('index', ['articles' => $articles]);
 
         //به ما بر می کرداند ['articles' => $articles] یک لیستی شبیه به این
+//        compact() برای ساده سازی
         return view('index', compact('articles'));
 
 

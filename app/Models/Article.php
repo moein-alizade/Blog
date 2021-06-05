@@ -11,7 +11,7 @@ class Article extends Model
 //    use Sluggable;
     use HasFactory;
 
-    protected  $fillable = [ 'user_id','title','slug' , 'body'];
+    protected  $fillable = ['user_id','title','slug','body','image'];
 
 //    public function getRouteKeyName(){
 //        //کار کند route-model-binding به هر فیلدی که ما می خواهیم تا  id تغییر از

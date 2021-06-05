@@ -1,4 +1,5 @@
-@extends('layouts.master')
+{{--  را که مقدارش برابر با درست می فرستد و می خواهد سایدبار مخفی شود $hide_sidebar یعنی به لایه مستر، متغیر   --}}
+@extends('layouts.master',['hide_sidebar' => true])
 @section('content')
 <html>
 <head>
@@ -6,7 +7,7 @@
 </head>
 <body>
 
-<div class="w-2/3 mx-auto">
+<div class="w-1/3 mx-auto">
         <div>
             @if(Session::has('success'))
                 <div class="p-60 mb-80 border-2 border-solid border-transparent rounded-3xl colors.green.400 bg-green-200 border-red-200">

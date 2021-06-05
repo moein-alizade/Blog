@@ -26,18 +26,24 @@
     <div class="flex flex-wrap ">
 
     <!-- Blog Entries Column -->
-    <div class="md:w-2/3 pr-4 pl-4">
+
+{{--   اگه متغیر سایدبار وجود داشت و نیز مقدارش برابر با درست بود آنگاه عرض بلاگ را 100 درصد بگذار و در غیر این صورت عرض را برابر با 2/3 بگذار    --}}
+    <div class="{{isset($hide_sidebar) && $hide_sidebar == true ? 'w-full' : 'md:w-2/3'}} pr-4 pl-4">
         @yield('content')
 
     </div>
 
-    <!-- Sidebar Widgets Column -->
+<!-- Sidebar Widgets Column -->
+{{--   isset()    آیا همچنین متغیری تعریف شده یا نه --}}
+{{--      اگه متغیر سایدبار وجود نداشت یا مقدارش برابر با غلط بود آنگاه سایدبار را نشان بده  --}}
+        @if(!isset($hide_sidebar) || $hide_sidebar != true)
         <div class="md:w-1/3 pr-4 pl-4 py-10">
             @section('sidebar')
                 @include('layouts.sidebar')
             @show
         </div>
-    </div>
+        @endif
+
     <!-- /.row -->
 
   </div>

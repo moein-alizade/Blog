@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Http\Requests\ArticleRequest;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 
 class ArticleController extends Controller
@@ -56,7 +57,7 @@ class ArticleController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     // برای ایجاد کردن مقاله مون
     // public function store(Request $request){
@@ -89,15 +90,60 @@ class ArticleController extends Controller
         // ]);
 
 
-        // دریافت اطلاعات اعتبار سنجی شده
-        $validate_data = $request->validated();
 
 
 
-//        return $request->all();
+
+
+// upload file
 
 
 
+    // انجام دادیم فقط اطلاعات اعتبار سنجی شده را دریافت می کنیم ArticleRequest اعتبار سنجی کردن چون قبلا با
+    $data = $request->validated();
+
+
+
+
+    //محتوای فایل که بصورت موقتی در سرور فایل ذخیره شده است
+    //        dd($data['image']);
+
+
+
+
+
+    //        upload() =  اضافه می کنیم /vendor/laravel/framework/src/illuminate/foundation/helpers.php این تابع را خودمان  توی فایل
+    //        را به تابع آپلود پاس می دهد که در نهایت تابع آپلود مسیر رسیدن به عکس را درون یک رشته بر می کرداند $data['image'] آبجکت
+    //        $data['image'] ذخیره مسیر رسیدن به عکس در این آبجکت
+            $data['image'] = upload($data['image']);
+
+
+
+
+    //    نشان دادن مسیر عکس آپلود شده
+    //            dd($data);
+
+
+
+//            انتقال به دیتابیس
+        $article = auth()->user()->articles()->create([
+           'title' => $data['title'],
+//            ُStr::slug($title, $separator);
+           'slug' => Str::slug($data['title'], '-'),
+            'body' => $data['body'],
+            'image' => $data['image'],
+        ]);
+
+
+
+
+
+
+
+
+
+
+// انتقال اطلاعات توی دیتابیس
 //        Article::create([
 //            دیتای یوزر را می گیرد و به آیدی اش دسترسی پیدا می کنیم
 //        solve1 -> error: General error: 1364 Field 'user_id' doesn't have a default value & Attempt to read property "id" on null
@@ -111,18 +157,22 @@ class ArticleController extends Controller
 //        solve2 (the best) -> error: General error: 1364 Field 'user_id' doesn't have a default value & Attempt to read property "id" on null
 //      هست را صدا می زنیم articles() دیتای کاربری که لاگین کرده را می گیریم و بعد رابطه را که
 //      create() ->  چون از این متد استفاده کردیم باید یک لیست از دیتا هایی که مدنظرمون هست پاس بدهیم
-        $article = auth()->user()->articles()->create([
-            'title' => $validate_data['title'],
-            'body' => $validate_data['body'],
-        ]);
+//        $article = auth()->user()->articles()->create([
+//            'title' => $validate_data['title'],
+//            'body' => $validate_data['body'],
+//        ]);
 
 
 
 
 
-
+//     ذخیره کن  category دسته بندی ها این آرتیکل را در جدول  ، categories() با استفاده از رابطه ی
 //        $article->categories()->attach($request->input('categories'));
-        $article->categories()->attach($validate_data['categories']);
+        $article->categories()->attach($data['categories']);
+
+
+
+
 
 
 //        return $request->all();
@@ -130,7 +180,7 @@ class ArticleController extends Controller
 
 
 
-        return redirect('/admin/articles/create');
+        return redirect('/');
     }
 
 
@@ -139,7 +189,7 @@ class ArticleController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     // public function edit($id){
     // هم باید تغییر بدیم return هم می توان استفاده کرد البته در  $id از  $article بجای
@@ -153,7 +203,7 @@ class ArticleController extends Controller
         $article = \App\Models\Article::where('id','=',$id)->first();
 
         // dd($article);
-        // returnR $article;
+        // return $article;
 
         return view('admin.articles.edit' , [
             'article' => $article
@@ -165,7 +215,7 @@ class ArticleController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     // public function update($id){
     // public function update(ArticleRequest $request,$id){
@@ -194,8 +244,62 @@ class ArticleController extends Controller
         // ]);
 
 
+
+
+
+
+
+
+
+
+        // upload file
         // دریافت اطلاعات اعتبار سنجی شده
-        $validate_data = $request->validated();
+        $data = $request->validated();
+
+
+
+        //محتوای فایل که بصورت موقتی ذخیره شده است
+        //        dd($data['image']);
+
+
+
+
+
+
+
+
+//        حذف تصاویر قبلی چون می خواهیم تصویر جدید را آپلود بکنیم
+//     آنگاه باید عکس قبلی را پاک کنیم   (article->image) و این پستی که ما داریم، خودش از قبل تصویر داشت  $data['image'] اکه یک تصویر جدید آپلود شده بود
+
+        if($data['image'] &&  isset($article->image))
+        {
+            deleteFile($article->image);
+        }
+
+
+
+
+
+
+
+        //        upload() =  اضافه می کنیم /vendor/laravel/framework/src/illuminate/foundation/helpers.php این تابع را خودمان  توی فایل
+        //        را به تابع آپلود پاس می دهد که در نهایت تابع آپلود مسیر رسیدن به عکس را درون یک رشته بر می کرداند $data['image'] آبجکت
+        //        $data['image'] ذخیره مسیر رسیدن به عکس در این آبجکت
+        $data['image'] = upload($data['image']);
+
+
+        //    نشان دادن مسیر عکس آپلود شده
+        //            dd($data);
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -223,7 +327,8 @@ class ArticleController extends Controller
 
         // ساده شده بالایی
         // $validate_data = آرتیکل و بادی را بر می گرداند
-        $article->update($validate_data);
+        $article->update($data);
+
 
 
 
@@ -232,22 +337,23 @@ class ArticleController extends Controller
 //         کنیم  detach() اول باید دسته بندی هایی که از قبل وجود دارد را
 //                                     کنیم attach() بعد مقادیر جدید را
 //        sync()  => می کند attach() یعنی حذف می کند، سپس مقادیر جدید را  detach() اول دیتا های قبلی را
-        $article->categories()->sync($validate_data['categories']);
+        $article->categories()->sync($data['categories']);
 
 
 
 
 
-        // return redirect('/admin/articles/create');
+
+         return redirect('/');
         // ریدایرکت به صفحه ی قبل(بجای کد بالایی این را استفاده می کنیم)
-        return back();
+        // return back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     // public function delete($id){
     public function destroy(Article $article)
@@ -257,6 +363,18 @@ class ArticleController extends Controller
 
         //delete() => متدی توی مدل ها هست که دیتا ها را حذف می کند
         $article->delete();
+
+
+
+// بکنی deleteFile() اکه مقاله ما تصویر داشت باید
+        if($article->image)
+        {
+            deleteFile($article->image);
+        }
+
+
+
+
 
         // ریدایرکت به صفحه ی قبل
         return back();
