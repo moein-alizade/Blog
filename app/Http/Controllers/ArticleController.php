@@ -9,7 +9,7 @@ class ArticleController extends Controller
 
     public function __construct()
     {
-//        را انجام می دهد middleware into web.php دقیقا همان کار
+        //        را انجام می دهد middleware into web.php دقیقا همان کار
         $this->middleware('auth');
     }
 

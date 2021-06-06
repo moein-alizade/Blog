@@ -14,29 +14,17 @@ class CreateARelBetweenArticlesAndCategoriesTable extends Migration
     public function up()
     {
 
-//        a_rel_between_articles_and_categories => این سعی می کند یک جدول با عنوان درست بکند که ما بهش نیاز نداریم
+    //a_rel_between_articles_and_categories => این سعی می کند یک جدول با عنوان درست بکند که ما بهش نیاز نداریم
 
-//        'article_category' => اسم جدول رابط باید ترکیبی از اسم دو تا مدل و بر اساس ترتیب حروف الفبا باشد
+    //'article_category' => اسم جدول رابط باید ترکیبی از اسم دو تا مدل و بر اساس ترتیب حروف الفبا باشد
         Schema::create('article_category', function (Blueprint $table) {
-
-//            به این دو موارد زیر نیاز نداریم پس حذفشان می کنیم
-//            $table->id();
-//            $table->timestamps();
-
             $table->unsignedBigInteger('article_id');
-//اکه می خواهیم با حذف شدن یک آرتیکل، اون دسته بندی هاش هم حذف بشود
+    //اکه می خواهیم با حذف شدن یک آرتیکل، اون دسته بندی هاش هم حذف بشود
             $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
-
-
-            $table->unsignedBigInteger('category_id');
-//اکه می خواهیم با حذف شدن یک آرتیکل، اون دسته بندی هاش هم حذف بشود
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-
-
-//             باید یکتا باشد و توی یک سطر مقدار تکرای نداشته باشند  article_id & category_id برای اینکه نتوانیم هیچ دو سطری با هم برابر باشند یعنی
+            $table->unsignedBigInteger('category_id');
+    //باید یکتا باشد و توی یک سطر مقدار تکرای نداشته باشند  article_id & category_id برای اینکه نتوانیم هیچ دو سطری با هم برابر باشند یعنی
             $table->unique(['article_id', 'category_id']);
-
-
         });
     }
 
@@ -45,7 +33,7 @@ class CreateARelBetweenArticlesAndCategoriesTable extends Migration
      *
      * @return void
      */
-//    یعنی هر وقت ما رولبک زدیم، این را برای ما دراپ بکند
+    //یعنی هر وقت ما رولبک زدیم، این را برای ما حذف بکند
     public function down()
     {
         Schema::dropIfExists('article_category');

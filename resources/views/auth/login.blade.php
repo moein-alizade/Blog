@@ -9,8 +9,8 @@
 
                 <div class="flex-auto p-6">
 
-{{--  چه روت ها و اسامی داریم بعدش آن اسمی که با این هماهنگ باشه را می گیرد واون آدرس مسیر را اینجا قرار می دهد  web.php یعنی میاد توی  action="{{ route('contact') }}"  --}}
-{{--                    <form method="POST" action="{{ route('contact') }}">--}}
+                    {{--  چه روت ها و اسامی داریم بعدش آن اسمی که با این هماهنگ باشه را می گیرد واون آدرس مسیر را اینجا قرار می دهد  web.php یعنی میاد توی  action="{{ route('contact') }}"  --}}
+                    {{--   <form method="POST" action="{{ route('contact') }}">--}}
 
                     <form method="POST" action="{{ route('login') }}">
                         @csrf

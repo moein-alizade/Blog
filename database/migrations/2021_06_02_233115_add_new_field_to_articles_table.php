@@ -16,6 +16,7 @@ class AddNewFieldToArticlesTable extends Migration
         Schema::table('articles', function (Blueprint $table) {
             // برای تغییر نوع و طول
             // $table->string('title',150)->change();
+
             // برای تغییر نام
             // $table->renameColumn('slug','slug_fa');
             // $table->integer('view')->default(0);

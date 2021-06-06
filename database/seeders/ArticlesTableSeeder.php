@@ -15,10 +15,6 @@ class ArticlesTableSeeder extends Seeder
     public function run()
     {
 
-//        برو توی اپ/مدل/مدل آرتیکل حالا 10 تا داده ی فیک تولید کن
-        return \App\Models\Article::factory()->count(10)->create();
-
-
         // استفاده از داده های فیک
         // $faker = \Faker\Factory::create();
         // foreach (range(1,10) as $item) {
@@ -31,6 +27,10 @@ class ArticlesTableSeeder extends Seeder
         //     ]);
         // }
 
+
+
+        // برو توی اپ/مدل/مدل آرتیکل حالا 10 تا داده ی فیک تولید کن
+        return \App\Models\Article::factory()->count(10)->create();
 
     }
 

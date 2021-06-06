@@ -6,6 +6,7 @@
     <h2 class="text-center pb-4 pt-3 text-red-500">Create Article</h2>
 
 
+    {{--    نمایش خطا ها   --}}
     <!-- any = هر -->
     @if($errors->any())
         <div class="relative px-3 py-3 mb-4 border rounded bg-red-200 border-red-300 text-red-800">
@@ -27,14 +28,14 @@
 
         <div class="mb-4">
             <lablae for="">category :</lablae>
-{{--  برای ایجاد امکان انتخاب چند تایی = multiple  --}}
-{{--          مشخص می کند که دسته بندی ما آرایه هست و چند تا مقدار را می تواند بر گرداند => name="categories[]  --}}
+    {{--  برای ایجاد امکان انتخاب چند تایی = multiple  --}}
+    {{--          مشخص می کند که دسته بندی ما آرایه هست و چند تا مقدار را می تواند بر گرداند => name="categories[]  --}}
             <select name="categories[]" class="block appearance-none w-full py-2 px-2 mt-2 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded hover:text-pink-600" multiple>
-{{--                <option value="1">laravel</option>--}}
-{{--                <option value="2">css</option>--}}
+    {{--                <option value="1">laravel</option>--}}
+    {{--                <option value="2">css</option>--}}
 
-{{--تمام دسته بندی ها را می گیرد = \App\Models\Category::all() --}}
-{{--  as category= با این پیمایش اش می کند --}}
+    {{--    تمام دسته بندی ها را می گیرد = \App\Models\Category::all() --}}
+    {{--    as category = توسط این پیمایش اش می کند --}}
                 @foreach(\App\Models\Category::all() as $category)
                     <option value="{{$category->id}}">{{ $category->name }}</option>
                 @endforeach

@@ -24,12 +24,11 @@ class ArticleRequest extends FormRequest
     public function rules()
     {
         return [
-            //            reqired =  حتما باید ثبت شود
+            // reqired =  حتما باید ثبت شود
             'title' => 'required|min:10|max:50',
             'body' => 'required',
             'categories' => 'required',
-
-//            تصویر می تواند مقدارش خالی باشد ولی اگه فرستاده شد باید حتما از نوع تصویر باشد و حداکثر حجمش 5000 کیلوبایت یا همان 5 مگابابت باشد
+            // تصویر می تواند مقدارش خالی باشد ولی اگه فرستاده شد باید حتما از نوع تصویر باشد و حداکثر حجمش 5120 کیلوبایت یا همان 5 مگابابت باشد
             'image' => 'nullable|image|max:5120',
         ];
     }

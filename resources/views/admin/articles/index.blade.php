@@ -23,10 +23,10 @@
             <!-- پاس بده foreach تک تک آرتیکل ها را به  -->
             @foreach($articles as $article)
                 <!-- <tr>
-                    <td>1</td>
-                    <td>this is article 1</td>
-                    <td><a href="#" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-red-600 text-white hover:bg-red-700">delete</a></td>
-                </tr> -->
+                        <td>1</td>
+                        <td>this is article 1</td>
+                        <td><a href="#" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-red-600 text-white hover:bg-red-700">delete</a></td>
+                    </tr> -->
 
                 <tr>
                     <td>{{ $article->id }}</td>

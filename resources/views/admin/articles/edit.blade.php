@@ -18,7 +18,7 @@
     @endif
 
     <!-- فرستادن دیتا ها به این پست -->
-{{--    توی فرم های ایجاد و ویرایش مقاله html ایجاد قابلیت آپلود فایل یا تصویر خصوصا از طرف      --}}
+    {{--    توی فرم های ایجاد و ویرایش مقاله html ایجاد قابلیت آپلود فایل یا تصویر خصوصا از طرف      --}}
     <form action="/admin/articles/{{ $article->id }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
@@ -27,14 +27,6 @@
             <lable for="title">title :</lable>
             <input type="text" name="title" class="block appearance-none w-full py-2 px-2 mt-2 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded hover:text-pink-600" value="{{ $article->title }}">
         </div>
-
-
-        {{--     dd($article->categories()->get())  = دسته بندی های مربوط به این آرتیکل را بر می کرداند  --}}
-        {{--     dd($article->categories()->pluck('id'));  = آیدی دسته بندی های مربوط به این آرتیکل را بر می کرداند  --}}
-        {{--     dd($article->categories()->pluck('id')->toArray())     تبدیل به آرایه از کالکشن  --}}
-        {{--     dd(in_array(4,$article->categories()->pluck('id')->toArray())) = آیا 4 توی این لیست وجود دارد یا نه    --}}
-        {{--     in_array($category->id,$article->categories()->pluck('id')->toArray())) ? 'selceted' : ''        =        برگدان و اگه غلط بود، رشته ی خالی برگردان selceted یعنی اگه درست بود، این را          --}}
-        {{--  $category->id  =  چون درون یک حلقه است و دسته بندی ها پیمایش می شوند     --}}
 
 
         <div class="mb-4">
@@ -52,8 +44,6 @@
                 @endforeach
             </select>
         </div>
-
-
 
 
 

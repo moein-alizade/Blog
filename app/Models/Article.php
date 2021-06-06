@@ -8,15 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-//    use Sluggable;
+    // use Sluggable;
     use HasFactory;
 
     protected  $fillable = ['user_id','title','slug','body','image'];
 
-//    public function getRouteKeyName(){
-//        //کار کند route-model-binding به هر فیلدی که ما می خواهیم تا  id تغییر از
-//        return 'slug';
-//    }
+    //    public function getRouteKeyName(){
+    //        //کار کند route-model-binding به هر فیلدی که ما می خواهیم تا  id تغییر از
+    //        return 'slug';
+    //    }
 
     public function sluggable(): array
     {
@@ -28,22 +28,18 @@ class Article extends Model
     }
 
 
-//    بر اساس آرتیکل، دیتا های یوزرش را هم برگذداند
+    //    بر اساس آرتیکل، دیتا های یوزرش را هم برگرداند
     public function user(){
-//        متعلق هست به فلان یوزر
-//        User::class = اسم مدل
 
-//        پیدا کند آرتیکلی که این کاربر ایجاد کرده است
+        //  پیدا کند آرتیکلی که این کاربر ایجاد کرده است
         return $this->belongsTo(\App\Models\User::class);
-
-
     }
 
 
     public function categories(){
 
-//        استفاده بکنیم belongsToMany() استفاده کرد و باید از  hasMany() یک آرتیکل تعداد زیادی دسته بندی دارد ولی اینجا چون رابطه ی چند به چند هست نباید از
-//        Category::class = model Category
+        // استفاده بکنیم belongsToMany() استفاده کرد و باید از hasMany() یک آرتیکل تعداد زیادی دسته بندی دارد ولی اینجا چون رابطه ی چند به چند هست نباید از
+        //  Category::class = model Category
         return $this->belongsToMany(\App\Models\Category::class);
     }
 

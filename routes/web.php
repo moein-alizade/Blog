@@ -15,16 +15,8 @@
 
 // HomeController@home   => اسم متد داخل کنترلر@اسم کنترلر
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'home']);
-
-
 Route::get('/registery', [\App\Http\Controllers\Auth\UserRegisterController::class, 'index']);
 Route::post('/registery/index', [\App\Http\Controllers\Auth\UserRegisterController::class, 'store'])->name('store');
-
-
-
-
-
-
 
 
 //برای نشان دادن هر صفحه جدید باید یک روت جدیدایجاد کنیم
@@ -33,15 +25,13 @@ Route::post('/registery/index', [\App\Http\Controllers\Auth\UserRegisterControll
 Route::get('/articles/{articleSlug}' , [\App\Http\Controllers\ArticleController::class, 'single']);
 
 
-
-
 //middleware('auth') =>  احراز هویت کاربر
 Route::get('/about', [\App\Http\Controllers\HomeController::class, 'about'])->middleware('auth');
 
 
-
 //name('') => برای این مفید هست که از یک روت چند جا استفاده کردیم و اکنون بخوایم آدرس مسیر اون روت را عوض کنیم دیگه لازم نیست توی همه آنجا هایی که از روت استفاده کردیم، آدرس مسیرش را عوض کنیم
 Route::get('/contact', [\App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+
 
 
 
@@ -86,13 +76,16 @@ Route::prefix('admin')->namespace('Admin')->group(function() {
     // put or post => وجود داشته باشد csrf باعث میشه که برای حذف اطلاعات حتما باید یک
     // Route::delete('/articles/{article}' , [ArticleController::class, 'destroy']);
 
+
+    // تعریف کردیم را خودش خودکار با این دستور ایجاد می کند articles روت هایی که مثلا ما برای
     //except([]);   =>    بجز
     Route::resource('articles' , 'ArticleController')->except(['show']);
 
     //only([]);     =>    فقط
     // Route::resource('articles' , 'ArticleController')->only(['destroy']);
+
 });
 
-
-Auth::routes();
+    // روت های احراز هویت را خودش خودکار با این دستور ایجاد می کند
+    Auth::routes();
 

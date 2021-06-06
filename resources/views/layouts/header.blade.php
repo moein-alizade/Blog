@@ -26,7 +26,7 @@
 
           @if(auth()->check())
               <a href="/admin/articles" class="w-1/12 bg-blue-400 hover:bg-blue-500 hover:border-blue-500 border-blue-400 border border-solid  font-normal inline-block ml-1 no-underline rounded-lg select-none text-center text-white my-2">{{ auth()->user()->first_name }}</a>
-      {{--   helper-function = route('')       --}}
+          {{--   helper-function = route('')       --}}
               <form action="{{ route('logout') }}" method="post">
                   @csrf
                   <button type="submit" class="w-10/12 bg-red-400 hover:bg-red-500 hover:border-red-500 border-red-400 border border-solid font-normal inline-block ml-2.5 my-2 no-underline px-2 rounded-lg text-center text-white">logout</button>
@@ -34,10 +34,6 @@
           @else
               <a href="{{ route('login') }}" class="w-1/13 bg-green-800 hover:bg-green-900 hover:border-green-900 border-green-800 border border-solid font-normal inline-block no-underline px-3 py-1.5 rounded-lg select-none text-center text-white">login</a>
           @endif
-
-
-
-
 
       </div>
     </div>

@@ -16,6 +16,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+
     protected $fillable = [
         'first_name',
         'last_name',
@@ -50,7 +51,7 @@ class User extends Authenticatable
     public function articles()
     {
 
-        //    hasMany(namemodel::class,'create_articles_table دقیقا کلید خارجی توی آرتیکل ') => یعنی تعداد زیادی آرتیکل وجود دارد
+        //hasMany(namemodel::class,'create_articles_table دقیقا کلید خارجی توی آرتیکل ') => یعنی تعداد زیادی آرتیکل وجود دارد
         //Article::class => خودمان ازش شی نمی سازیم و اجازه ایجاد کردن یک شی یا کلاس را به هسته لاراول می دهیم
         return $this->hasMany(\App\Models\Article::class);
 
