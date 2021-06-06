@@ -66,7 +66,7 @@ class UserRegisterController extends Controller
 
 
         // ریدایرکت به صفحه آرتیکل ها و به همراه آن یک اعلان با پیام موفقیت آمیز را نشان می دهد
-        return redirect('/admin/articles')
+        return redirect('/')
             ->with('success', 'User created successfully');
 
 

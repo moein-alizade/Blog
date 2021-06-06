@@ -84,6 +84,10 @@ Route::prefix('admin')->namespace('Admin')->group(function() {
     //only([]);     =>    فقط
     // Route::resource('articles' , 'ArticleController')->only(['destroy']);
 
+
+    //  که برای حذف عکس آرتیکل به هنگام درخواست و کلیک بر علامت ضربدر route-model-binding و به روش get ایجاد روتی از نوع
+    Route::get('/articles/remove-image/{article}',[\App\Http\Controllers\Admin\ArticleController::class, 'destroyImage']);
+
 });
 
     // روت های احراز هویت را خودش خودکار با این دستور ایجاد می کند

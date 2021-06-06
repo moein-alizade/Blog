@@ -35,7 +35,7 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // روت اصلی،form delete
+    // روت اصلی
     public function index()
     {
         return view('admin.articles.index' , [
@@ -88,7 +88,7 @@ class ArticleController extends Controller
 
         // upload file
         // انجام دادیم فقط اطلاعات اعتبار سنجی شده را دریافت می کنیم ArticleRequest گام اول: اعتبار سنجی کردن چون قبلا با
-        $data = $request->validated();
+                  $data = $request->validated();
 
 
         //        نمایش محتوای فایل که بصورت موقتی در سرور ذخیره شده است
@@ -102,14 +102,19 @@ class ArticleController extends Controller
 
 
 
+
         //        انتقال به دیتابیس
                   $article = auth()->user()->articles()->create([
-                   'title' => $data['title'],
-        //          ُStr::slug($title, $separator);       =          "-" توسط دستور رو به رو خط های فاصله تبدیل شود به کاراکتر slug از کارکتر فاصله استفاده شود باید برای  title چون ممکن است درون
-                   'slug' => Str::slug($data['title'], '-'),
-                    'body' => $data['body'],
-                    'image' => $data['image'],
+                      'title' => $data['title'],
+                      //          ُStr::slug($title, $separator);       =          "-" توسط دستور رو به رو خط های فاصله تبدیل شود به کاراکتر slug از کارکتر فاصله استفاده شود باید برای  title چون ممکن است درون
+                      'slug' => Str::slug($data['title'], '-'),
+                      'body' => $data['body'],
+                      'image' => $data['image'],
                   ]);
+
+
+
+
 
 
 
@@ -119,7 +124,7 @@ class ArticleController extends Controller
                 $article->categories()->attach($data['categories']);
 
 
-                return redirect('/');
+                return redirect('/admin/articles');
     }
 
 
@@ -173,9 +178,8 @@ class ArticleController extends Controller
         //        upload() =  اضافه می کنیم /vendor/laravel/framework/src/illuminate/foundation/helpers.php این تابع را خودمان  توی فایل
         //        را به تابع آپلود پاس می دهد که در نهایت تابع آپلود مسیر رسیدن به عکس را درون یک رشته بر می کرداند $data['image'] آبجکت
         //        $data['image'] ذخیره مسیر رسیدن به عکس در این آبجکت
+
         $data['image'] = upload($data['image']);
-
-
 
 
 
@@ -210,7 +214,7 @@ class ArticleController extends Controller
         $article->categories()->sync($data['categories']);
 
 
-        return redirect('/');
+        return redirect('/admin/articles');
 
     }
 
@@ -237,7 +241,29 @@ class ArticleController extends Controller
         }
 
 
-        // ریدایرکت به صفحه ی قبل
         return back();
+
     }
+
+
+
+
+    // id = $article     ,      Article = model Article
+    public function destroyImage(Article $article)
+    {
+        // استفاده می کنیم return $article الان ما تمام مقادیر آرتیکل را دریافت کرده ایم و برای تست از دستور
+
+
+        // ات را آپدیت کن ( که ما در اینجا می خواهیم هیچی را نشان ندهد) image آرتیکل برو فیلد
+        $article->update(['image' => null ]);
+        return back();
+
+    }
+
+
+
 }
+
+
+
+

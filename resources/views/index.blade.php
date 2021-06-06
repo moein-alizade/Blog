@@ -8,6 +8,7 @@
     <!-- Blog Post -->
     @foreach($articles as $article)
         <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 mb-4">
+            {{--  اگه عکس برای مقاله مشخص شده بود و وجود داشت آنگاه همان را بجای تصویر مقاله نشان بده و در غیر این صورت برای عکس مقاله ها از تصویر پیش فرض که خودمان مشخص کردیم را نشان بده        --}}
             <img class="w-full rounded rounded-t" src="{{ isset($article->image) ? asset($article->image) : asset('/image/default.jpeg') }}" alt="Card image cap">
             <div class="flex-auto p-6">
                 {{-- نمایش دادن عنوان آرتیکل--}}
@@ -23,7 +24,7 @@
 
     @endforeach
 
-    <div class="mx-64">
+    <div class="mx-60">
         {{--   آرتیکل ها که شماره بندی شدند را تبدیل به لینک می کند     --}}
         {{ $articles->links()  }}
     </div>

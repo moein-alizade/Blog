@@ -59,7 +59,7 @@
 
 
         <button class="w-2/12 h-full bg-green-600 hover:bg-green-700 hover:border-green-700 border-green-600  border  border-solid font-normal inline-block  no-underline px-3 py-0.5 rounded select-none text-center text-white mb-14">send</button>
-        <a href="/" class="w-2/12 h-full bg-red-700 hover:bg-red-800 hover:border-red-800 border-red-700 border font-normal inline-block ml-4 no-underline px-3 py-0.5 rounded select-none text-center text-white my-2">cancel</a>
+        <a href="/admin/articles" class="w-2/12 h-full bg-red-700 hover:bg-red-800 hover:border-red-800 border-red-700 border font-normal inline-block ml-4 no-underline px-3 py-0.5 rounded select-none text-center text-white my-2">cancel</a>
     </form>
 </div>
 @endsection

@@ -45,6 +45,7 @@
 
     <!-- /.row -->
 
+    </div>
   </div>
   <!-- /.container -->
 
