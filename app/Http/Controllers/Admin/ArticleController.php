@@ -19,10 +19,10 @@ class ArticleController extends Controller
     //    احراز هویت متد ها
     public function __construct()
     {
-    //        احراز هویت روی تمام متد ها
-    //        $this->middleware('auth');
+              // احراز هویت روی تمام متد ها
+              // $this->middleware('auth');
 
-    //        احراز هویت روی تمام متد ها بجز ایندکس
+              // احراز هویت روی تمام متد ها بجز ایندکس
               $this->middleware('auth')->except(['index']);
     }
 
@@ -39,7 +39,14 @@ class ArticleController extends Controller
     public function index()
     {
         return view('admin.articles.index' , [
-            'articles' => Article::all()
+              // گرفتن مقالات
+              // 'articles' => Article::all()
+
+              // گرفتن مقالات بصورتی که مقاله تازه ایجاد شده در ابتدا نشان بدهد
+              // orderBy('', '')  =>   فیلد اول نام ستونی که می خواهیم مرتب کنیم و فلید نوع مرتب شدن مثل صعودی یا نزولی هست
+              // 'articles' => Article::orderBy('created_at', 'desc')->get()
+              // ساده شده دستور بالا هست
+              'articles' => Article::latest()->get()
         ]);
     }
 
@@ -66,7 +73,7 @@ class ArticleController extends Controller
     public function store(ArticleRequest $request)
     {
 
-        //       validate
+        //       1. validate
 
         //       Method1:   $validate_data = $this->validate(request() ,
         //                    [
@@ -86,7 +93,7 @@ class ArticleController extends Controller
 
 
 
-        // upload file
+        // 2. upload file
         // انجام دادیم فقط اطلاعات اعتبار سنجی شده را دریافت می کنیم ArticleRequest گام اول: اعتبار سنجی کردن چون قبلا با
                   $data = $request->validated();
 
@@ -98,18 +105,25 @@ class ArticleController extends Controller
         //        upload() =  اضافه می کنیم /vendor/laravel/framework/src/illuminate/foundation/helpers.php این تابع را خودمان  توی فایل
         //        را به تابع آپلود پاس می دهد که در نهایت تابع آپلود مسیر رسیدن به عکس را درون یک رشته بر می کرداند $data['image'] آبجکت
         //        $data['image'] ذخیره مسیر رسیدن به عکس در این آبجکت
-                  $data['image'] = upload($data['image']);
+
+        //        اگه عکسی توی آرایه ی داده هایی که فرستادیم، بود آنگاه تابع آپلود را صدا بزن
+                if(isset($data['image']))
+                {
+                    $data['image'] = upload($data['image']);
+                }
 
 
 
 
-        //        انتقال به دیتابیس
+
+                  //        3. انتقال به دیتابیس
                   $article = auth()->user()->articles()->create([
                       'title' => $data['title'],
                       //          ُStr::slug($title, $separator);       =          "-" توسط دستور رو به رو خط های فاصله تبدیل شود به کاراکتر slug از کارکتر فاصله استفاده شود باید برای  title چون ممکن است درون
                       'slug' => Str::slug($data['title'], '-'),
                       'body' => $data['body'],
-                      'image' => $data['image'],
+                      //         اگه عکسی توی آرایه ی داده هایی که فرستادیم، بود آنگاه آن عکس را به دیتابیس بفرست و در غیر این صورت مقدارش را تهی بگذار
+                      'image' => isset($data['image']) ? $data['image'] : null ,
                   ]);
 
 
@@ -161,14 +175,14 @@ class ArticleController extends Controller
     {
 
         // upload file
-        // دریافت اطلاعات اعتبار سنجی شده
+        // 1. دریافت اطلاعات اعتبار سنجی شده
         $data = $request->validated();
 
 
 
-        //     حذف تصاویر قبلی چون می خواهیم تصویر جدید را آپلود بکنیم
-        //     آنگاه باید عکس قبلی را پاک کنیم  (article->image) و این پستی که ما داریم، خودش از قبل تصویر داشت  $data['image'] اکه یک تصویر جدید آپلود شده بود
-        if($data['image'] &&  isset($article->image))
+        //     2. حذف تصاویر قبلی چون می خواهیم تصویر جدید را آپلود بکنیم
+        //     آنگاه باید عکس قبلی را پاک کنیم تا بعدش عکس جدید را در دیتابیسمان آپدیت کنیم  (article->image) و این پستی که ما داریم، خودش از قبل تصویر داشت  $data['image'] اکه یک تصویر جدید در آرایه ی داده های ارسالی وجود داشت
+        if(isset($data['image']) &&  isset($article->image))
         {
             deleteFile($article->image);
         }
@@ -179,7 +193,12 @@ class ArticleController extends Controller
         //        را به تابع آپلود پاس می دهد که در نهایت تابع آپلود مسیر رسیدن به عکس را درون یک رشته بر می کرداند $data['image'] آبجکت
         //        $data['image'] ذخیره مسیر رسیدن به عکس در این آبجکت
 
-        $data['image'] = upload($data['image']);
+        //        3. اگه عکسی توی آرایه ی داده هایی که فرستادیم، بود آنگاه تابع آپلود را صدا بزن
+        if(isset($data['image']))
+        {
+            $data['image'] = upload($data['image']);
+        }
+
 
 
 
@@ -194,7 +213,7 @@ class ArticleController extends Controller
         // }
 
 
-        // این فیلد ها رو توی آرتیکل آپدیت می کند
+        // 4. این فیلد ها رو توی آرتیکل آپدیت می کند
         // $article->update([
         //     'title' => $validate_data['title'],
         //     'slug' => $validate_data['title'],
@@ -241,7 +260,7 @@ class ArticleController extends Controller
         }
 
 
-        return back();
+        return redirect('/admin/articles');
 
     }
 
@@ -259,7 +278,6 @@ class ArticleController extends Controller
         return back();
 
     }
-
 
 
 }

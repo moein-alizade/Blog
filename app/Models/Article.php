@@ -11,6 +11,7 @@ class Article extends Model
     // use Sluggable;
     use HasFactory;
 
+    // فیلد های مجاز پر شدن توسط کاربر
     protected  $fillable = ['user_id','title','slug','body','image'];
 
     //    public function getRouteKeyName(){

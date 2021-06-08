@@ -17,6 +17,14 @@
         </div>
     @endif
 
+
+    {{--    فرم دکمه حذف در صفحه ویرایش صفحه مقاله    --}}
+    <form action="/admin/articles/{{ $article->id }}" method="post" class="flex flex-row-reverse w-full h-full">
+        @csrf
+        @method('delete')
+        <button class="w-1/6 h-full bg-red-400 hover:bg-red-500 hover:border-red-500 border-red-400 border border-solid font-normal inline-block ml-4 no-underline px-3 py-0.5 rounded-tl-full rounded-br-full select-none text-center text-white my-2">delete</button>
+    </form>
+
     <!-- فرستادن دیتا ها به این پست -->
     {{--    توی فرم های ایجاد و ویرایش مقاله html ایجاد قابلیت آپلود فایل یا تصویر خصوصا از طرف      --}}
     <form action="/admin/articles/{{ $article->id }}" method="post" enctype="multipart/form-data">
@@ -67,11 +75,12 @@
                     </div>
                 @endif
         </div>
-
         <input type="file" name="image" class="block appearance-none w-11/12 py-2 px-2 mt-2 mb-4 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded hover:text-pink-600">
         <button class="w-2/12 h-full bg-green-800 hover:bg-green-900 hover:border-green-900 border-green-800 border border-solid font-normal inline-block no-underline px-3 py-0.5 rounded select-none text-center text-white mb-14">update</button>
-        <a href="/admin/articles" class="w-2/12 h-full bg-red-700 hover:bg-red-800 hover:border-red-800 border-red-700 border font-normal inline-block ml-4 no-underline px-3 py-0.5 rounded select-none text-center text-white my-2">cancel</a>
+        <a href="/" class="w-2/12 h-full bg-red-700 hover:bg-red-800 hover:border-red-800 border-red-700 border font-normal inline-block ml-4 no-underline px-3 py-0.5 rounded select-none text-center text-white my-2">cancel</a>
     </form>
+
+
 
 </div>
 @endsection

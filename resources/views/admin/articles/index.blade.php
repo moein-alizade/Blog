@@ -31,12 +31,13 @@
                 <tr>
                     <td>{{ $article->id }}</td>
                     <td>{{ $article->title }}</td>
+
                     <td>
-                        <form action="/admin/articles/{{ $article->id }}" method="post">
+                        <a href="/admin/articles/{{ $article->id }}/edit" class="w-1/4 h-full bg-blue-400 hover:bg-blue-500 hover:border-blue-500 border-blue-400 border font-normal inline-block ml-4 no-underline px-3 py-0.5 rounded select-none text-center text-white my-2">edit</a>
+                        <form action="/admin/articles/{{ $article->id }}" method="post" class="inline-block">
                             @csrf
                             @method('delete')
-                            <a href="/admin/articles/{{ $article->id }}/edit" class="w-1/3 h-full bg-blue-400 hover:bg-blue-500 hover:border-blue-500 border-blue-400 border font-normal inline-block ml-4 no-underline px-3 py-0.5 rounded select-none text-center text-white my-2">edit</a>
-                            <button class="w-1/3 h-full bg-red-400 hover:bg-red-500 hover:border-red-500 border-red-400 border border-solid font-normal inline-block ml-4 no-underline px-3 py-0.5 rounded select-none text-center text-white my-2">delete</button>
+                            <button class="w-full h-full bg-red-400 hover:bg-red-500 hover:border-red-500 border-red-400 border border-solid font-normal inline-block ml-4 no-underline px-3 py-0.5 rounded select-none text-center text-white my-2">delete</button>
                         </form>
                     </td>
                 </tr>
