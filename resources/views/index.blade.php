@@ -1,13 +1,8 @@
 @extends('layouts.master')
-
 @section('content')
-<h1 class="my-4">Page Heading
-    <small>Secondary Text</small>
-    </h1>
-
     <!-- Blog Post -->
     @foreach($articles as $article)
-        <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 mb-4">
+        <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 mb-4 mt-9">
             {{--  اگه عکس برای مقاله مشخص شده بود و وجود داشت آنگاه همان را بجای تصویر مقاله نشان بده و در غیر این صورت برای عکس مقاله ها از تصویر پیش فرض که خودمان مشخص کردیم را نشان بده        --}}
             <img class="w-full rounded rounded-t" src="{{ isset($article->image) ? asset($article->image) : asset('/image/default.jpeg') }}" alt="Card image cap">
             <div class="flex-auto p-6">
@@ -17,11 +12,9 @@
                 <a href="/articles/{{ $article->slug }}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-b-2xl py-1 px-3 my-3 leading-normal no-underline bg-red-300 text-white hover:bg-red-400">Read More &rarr;</a>
             </div>
             <div class="py-3 px-6 bg-gray-200 border-t-1 border-gray-300 text-gray-700">
-                Posted on January 1, 2020 by
-                <a href="#">Start Bootstrap</a>
+                <p>Posted on {{ $article->created_at }}</p>
             </div>
         </div>
-
     @endforeach
 
     <div>

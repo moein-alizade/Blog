@@ -19,9 +19,6 @@ class ArticleController extends Controller
     //    احراز هویت متد ها
     public function __construct()
     {
-              // احراز هویت روی تمام متد ها
-              // $this->middleware('auth');
-
               // احراز هویت روی تمام متد ها بجز ایندکس
               $this->middleware('auth')->except(['index']);
     }
@@ -69,7 +66,7 @@ class ArticleController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
 
-    // برای ایجاد کردن مقاله مون
+    // ذخیره سازی مقاله ها در پایگاه داده
     public function store(ArticleRequest $request)
     {
 
@@ -153,7 +150,6 @@ class ArticleController extends Controller
     public function edit($id)
     {
 
-        // Article = خود مدل , $article = باید اسم مدل توی روت باشه
         // ذخیره کن $article اولین آیدی مقاله ای که درخواست ویرایش داده شده را درون متغیر
         $article = \App\Models\Article::where('id','=',$id)->first();
 
@@ -226,7 +222,6 @@ class ArticleController extends Controller
 
 
 
-
         //        قدم سوم آپدیت مقاله: بعد از آپدیت شدن دیتا ها ما باید دسته بندی ها رو هم آپدیت کنیم حالا باید
         //        کنیم attach() کنیم و بعد مقادیر جدید را  detach() اول باید دسته بندی هایی که از قبل وجود دارد را
         //        sync()  => می کند attach() یعنی حذف می کند، سپس مقادیر جدید را  detach() اول دیتا های قبلی را
@@ -252,7 +247,6 @@ class ArticleController extends Controller
         $article->delete();
 
 
-
         // بکنی deleteFile() اکه مقاله ما از قبل تصویر داشت باید
         if($article->image)
         {
@@ -272,11 +266,17 @@ class ArticleController extends Controller
     {
         // استفاده می کنیم return $article الان ما تمام مقادیر آرتیکل را دریافت کرده ایم و برای تست از دستور
 
-
         // ات را آپدیت کن ( که ما در اینجا می خواهیم هیچی را نشان ندهد) image آرتیکل برو فیلد
         $article->update(['image' => null ]);
         return back();
+    }
 
+
+
+    public function single($article)
+    {
+        // return view('single' , ['article' => $article]);
+        return view('single' , compact('article'));
     }
 
 

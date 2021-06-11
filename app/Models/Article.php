@@ -33,17 +33,25 @@ class Article extends Model
     public function user(){
 
         //  پیدا کند آرتیکلی که این کاربر ایجاد کرده است
-        return $this->belongsTo(\App\Models\User::class);
+        // را روی آن تعریف کنیم belongsTo هر آرتیکلی متعلق به یک کاربر هست. که می توانیم رابطه
+        return $this->belongsTo(User::class);
     }
 
 
     public function categories(){
 
         // استفاده بکنیم belongsToMany() استفاده کرد و باید از hasMany() یک آرتیکل تعداد زیادی دسته بندی دارد ولی اینجا چون رابطه ی چند به چند هست نباید از
-        //  Category::class = model Category
+        //  Category::class => model Category
         return $this->belongsToMany(\App\Models\Category::class);
     }
 
+    public function comments()
+    {
+        // است، می نویسیم. اینکار به دلیل است که ما می خواهیم نظرات سطح والد را نمایش دهیم و نیز این نظرات را ذخیره کنیم null شان برابر با  parent_id دراینجا ما همه نظراتی که که مقدار
+        // تفاوت قائل شویم (reply) بدین ترتیب پس ما باید بین نظرات و پاسخ ها
+        // morphMany() => ایجاد جدول مرکزی و ارتباطاتش را مشخص می کند مثل جدول نظرات برای جدول فیلم و خبر و مقاله و غیره و معنی اش چند وجه ای
+        return $this->morphMany(Comment::class, 'commentable')->whereNull('parent_id');
+    }
 
 }
 
