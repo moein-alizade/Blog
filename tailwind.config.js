@@ -9,8 +9,14 @@ module.exports = {
     theme: {
         extend: {
             width: {
-                '200': '50rem'
-            }
+                '200': '50rem',
+            },
+
+            colors: {
+                green: {
+                    450: '#00ff7f',
+                }
+            },
         },
     },
     variants: {

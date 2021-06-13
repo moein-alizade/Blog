@@ -2,7 +2,7 @@
     <div class="container mx-auto sm:px-4">
       <div class="flex row justify-end w-full" id="navbarResponsive">
           <div class="w-3/12 h-1/6 ml-9">
-              <a href="/"><img src="/image/mlogo.png" class="w-1/4"></a>
+              <a href="/"><img src="/image/mlogo.png" id="mlogo" class="w-1/4"></a>
           </div>
 
           <div class="w-9/12 h-1/6 pt-1.5">

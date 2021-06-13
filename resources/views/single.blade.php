@@ -1,6 +1,12 @@
 @extends('layouts.master',['hide_sidebar' => true])
 @section('content')
-    <h1 class="my-4 text-center text-2xl text-blue-500">{{ $article->title }}</h1>
+    <div class="flex flex-row justify-between my-4 text-center text-2xl text-green-600">
+        <h1>{{ $article->title }}</h1>
+        {{--     format('%B %d، %Y'); // دی 02، 1391         &   format('%A, %d %B %y'); // جمعه، 23 اسفند 97     &     format('Y-m-d')               --}}
+        <div>
+            {{ carbonToPersian($article->created_at)->format('%B %d، %Y') }}
+        </div>
+    </div>
 
     <!-- Blog Post -->
 
@@ -13,11 +19,11 @@
                 <p class="mb-0">{{ $article->body }}</p>
             </div>
             <div class="py-3 px-6 border-t-1 border-gray-300 text-gray-700 border-b-4 border-dashed border-purple-400">
-                <p>Posted on {{ $article->created_at }}</p>
                 {{--   نمایش دسته بندی ها --}}
                 <ul>
+                    <li class="text-red-500">Categories :</li>
                     @foreach($article->categories()->get() as $category)
-                        <li>*{{ $category->name }}</li>
+                        <li class="pl-5 text-blue-700">{{ $category->name }}</li>
                     @endforeach
                 </ul>
             </div>
