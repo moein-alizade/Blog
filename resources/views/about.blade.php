@@ -9,7 +9,7 @@
     </head>
     <body>
 
-    <div class="p-3.5 text-center text-white bg-blue-500">
+    <div class="p-3.5 text-center text-white bg-blue-500 mb-6 w-full rounded-b-full">
         <h1>About Us Page</h1>
         <p>In this personal blog. articles on</p>
         <p> Laravel topics,technology,education,entertainment,etc are published.</p>
@@ -18,9 +18,9 @@
     <h2 class="text-center mt-2 mb-2">Our Team</h2>
     <div class="flex flex-row justify-center">
         <div class="w-1/3 mb-6 pl-3 pr-3 text-left">
-            <div class="m-3 shadow-md">
+            <div class="m-3 shadow-2xl">
                 <img src="/image/user1.jpg" alt="Fateme" class="w-full">
-                <div class="text-center text-green-450">
+                <div class="text-center text-green-450 text-sm my-2 pb-3">
                     <h2>Fateme Jafarinejad</h2>
                     <p>Project Manager</p>
                     <p>PhD Artificial Intelligence</p>
@@ -29,9 +29,9 @@
             </div>
         </div>
         <div class="w-1/3 mb-6 pl-3 pr-3 text-left">
-            <div class="m-3 shadow-md">
+            <div class="m-3 shadow-2xl">
                 <img src="/image/user2.jpg" alt="Moein" class="w-full">
-                <div class="text-center text-green-450">
+                <div class="text-center text-green-450 text-sm my-2 pb-3">
                     <h2>Moein Alizade</h2>
                     <p>Web Developer</p>
                     <p>Bachelor Information Technology</p>

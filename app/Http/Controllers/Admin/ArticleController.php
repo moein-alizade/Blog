@@ -129,10 +129,12 @@ class ArticleController extends Controller
 
 
 
-
         //     ذخیره کن  category دسته بندی ها این آرتیکل را در جدول  ، categories() با استفاده از رابطه ی
-        //      $article->categories()->attach($request->input('categories'));
-                $article->categories()->attach($data['categories']);
+        //     $article->categories()->attach($request->input('categories'));
+        //     sync()  => می کند attach() یعنی حذف می کند، سپس مقادیر جدید را  detach() اول دیتا های قبلی را
+               $article->categories()->sync($data['categories']);
+
+
 
 
                 return redirect('/admin/articles');
@@ -222,9 +224,9 @@ class ArticleController extends Controller
 
 
 
-        //        قدم سوم آپدیت مقاله: بعد از آپدیت شدن دیتا ها ما باید دسته بندی ها رو هم آپدیت کنیم حالا باید
-        //        کنیم attach() کنیم و بعد مقادیر جدید را  detach() اول باید دسته بندی هایی که از قبل وجود دارد را
-        //        sync()  => می کند attach() یعنی حذف می کند، سپس مقادیر جدید را  detach() اول دیتا های قبلی را
+        // قدم سوم آپدیت مقاله: بعد از آپدیت شدن دیتا ها ما باید دسته بندی ها رو هم آپدیت کنیم حالا باید
+        // کنیم attach() کنیم و بعد مقادیر جدید را  detach() اول باید دسته بندی هایی که از قبل وجود دارد را
+        // sync()  => می کند attach() یعنی حذف می کند، سپس مقادیر جدید را  detach() اول دیتا های قبلی را
         $article->categories()->sync($data['categories']);
 
 
@@ -275,6 +277,7 @@ class ArticleController extends Controller
 
     public function single($article)
     {
+
         // return view('single' , ['article' => $article]);
         return view('single' , compact('article'));
     }

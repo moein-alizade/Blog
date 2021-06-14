@@ -19,28 +19,16 @@
     <div class="flex flex-wrap ">
         <div class="lg:w-1/2 pr-4 pl-4">
         <ul class="list-unstyled mb-0">
-            <li>
-            <a href="#">Tutorial</a>
-            </li>
-            <li>
-            <a href="#">Technology</a>
-            </li>
-            <li>
-            <a href="#">Laravel</a>
-            </li>
+            @foreach(\App\Models\Category::take(3)->latest('updated_at')->get() as $category)
+                <li><a href="/category/{{ $category->name }}">{{ $category->name }}</a></li>
+            @endforeach
         </ul>
         </div>
         <div class="lg:w-1/2 pr-4 pl-4">
         <ul class="list-unstyled mb-0">
-            <li>
-            <a href="#">Game</a>
-            </li>
-            <li>
-            <a href="#">Movie</a>
-            </li>
-            <li>
-            <a href="#">News</a>
-            </li>
+            @foreach(\App\Models\Category::skip(3)->take(3)->latest('updated_at')->get() as $category)
+                <li><a href="/category/{{ $category->name }}">{{ $category->name }}</a></li>
+            @endforeach
         </ul>
         </div>
     </div>
