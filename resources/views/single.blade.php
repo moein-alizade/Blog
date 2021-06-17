@@ -1,11 +1,11 @@
-@extends('layouts.master',['hide_sidebar' => true])
+@extends('layouts.'.$activeTheme,['hide_sidebar' => true])
 @section('content')
     <div class="flex flex-row justify-between my-4">
 
         <div></div>
 
-        <div class="text-4xl text-blue-600">
-            <h1>( {{ $article->title }} )</h1>
+        <div class="text-4xl text-red-500">
+            <h1>{{ $article->title }}</h1>
         </div>
 
         {{--     format('%B %d، %Y'); // دی 02، 1391         &   format('%A, %d %B %y'); // جمعه، 23 اسفند 97     &     format('Y/m/d')               --}}

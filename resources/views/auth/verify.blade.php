@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.'.$activeTheme)
 
 @section('content')
 <div class="container mx-auto sm:px-4">

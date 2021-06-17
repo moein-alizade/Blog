@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Options;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // from options table and first record database and accessible by all blades
+        $result = Options::first()->theme;
+        View::share('activeTheme',$result);
     }
 }

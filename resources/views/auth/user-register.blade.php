@@ -1,5 +1,5 @@
 {{--  را که مقدارش برابر با درست می فرستد و می خواهد سایدبار مخفی شود $hide_sidebar یعنی به لایه مستر، متغیر   --}}
-@extends('layouts.master',['hide_sidebar' => true])
+@extends('layouts.'.$activeTheme,['hide_sidebar' => true])
 @section('content')
 <html>
 <head>
@@ -62,7 +62,7 @@
                 </div>
 
 
-                    <button class="w-2/12 h-full bg-green-600 hover:bg-green-700 hover:border-green-700 border-green-600 border border-solid font-normal inline-block no-underline px-3 py-0.5 rounded select-none text-center text-white mb-14">register</button>
+                    <button class="w-2/12 h-full bg-green-600 hover:bg-green-700 hover:border-green-700 border-green-600 border border-solid font-normal inline-block no-underline py-0.5 rounded select-none text-center text-white mb-14">register</button>
             </div>
         </form>
 </div>

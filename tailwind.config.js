@@ -15,8 +15,10 @@ module.exports = {
             colors: {
                 green: {
                     450: '#00ff7f',
+                    850: '#2F4F4F',
                 }
             },
+
         },
     },
     variants: {

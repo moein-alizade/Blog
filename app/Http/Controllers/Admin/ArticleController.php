@@ -113,7 +113,7 @@ class ArticleController extends Controller
 
 
 
-                  //        3. انتقال به دیتابیس
+                  // 3. انتقال به دیتابیس
                   $article = auth()->user()->articles()->create([
                       'title' => $data['title'],
                       //          ُStr::slug($title, $separator);       =          "-" توسط دستور رو به رو خط های فاصله تبدیل شود به کاراکتر slug از کارکتر فاصله استفاده شود باید برای  title چون ممکن است درون

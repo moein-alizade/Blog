@@ -1,5 +1,5 @@
 <!-- farakhani master page -->
-@extends('layouts.master',['hide_sidebar' => true])
+@extends('layouts.'.$activeTheme,['hide_sidebar' => true])
 
 @section('content')
 <div class="w-1/2 mx-auto">

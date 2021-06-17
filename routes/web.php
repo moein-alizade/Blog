@@ -31,6 +31,13 @@ Route::get('/about', [\App\Http\Controllers\HomeController::class, 'about'])->mi
 Route::get('/contact', [\App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
 
 
+Route::get('/theme',[\App\Http\Controllers\ThemeController::class, 'show'])->name('theme');
+
+
+// {} = کرلی برکت or curly bracket    ,  [] = bracket
+
+Route::get('/categories/{category:name}' , [\App\Http\Controllers\CategoryController::class, 'show'])->name('category.show');
+
 
 
 //  استفاد کردیم get می توان دریافت کرد چون از متد  get تنها توی روت  دیتا را بصورت

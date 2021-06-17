@@ -1,4 +1,4 @@
-@extends('layouts.master',['hide_sidebar' => true])
+@extends('layouts.'.$activeTheme,['hide_sidebar' => true])
 
 @section('content')
 <div class="container mx-auto sm:px-4 pt-10 pb-44">

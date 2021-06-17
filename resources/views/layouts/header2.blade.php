@@ -1,30 +1,31 @@
-<nav class="relative flex flex-wrap items-center content-between py-3 px-4  text-white bg-gray-900 top-0">
+<nav class="relative flex flex-wrap items-center content-between py-3 px-4  text-white bg-green-850 top-0">
     <div class="container mx-auto sm:px-4">
-      <div class="flex row justify-end w-full" id="navbarResponsive">
-          <div class="w-3/12 h-1/6 ml-9">
-              <a href="/"><img src="/image/mlogo.png" id="mlogo" class="w-1/4"></a>
+      <div class="flex flex-row-reverse justify-end w-full" id="navbarResponsive">
+          <div class="w-3/12 h-1/6">
+              <a href="/" class="flex flex-row-reverse"><img src="/image/mlogo.png" id="mlogo" class="w-1/4"></a>
           </div>
 
-          <div class="w-9/12 h-1/6 pt-1.5">
+          <div class="w-9/12 h-1/6 pt-1.5 flex">
                   <ul class="flex flex-row-reverse">
                       <li>
-                          <a class="inline-block py-2 px-4 no-underline" href="/registery">register</a>
+                          <a href="{{   route('theme')   }}" class="text-yellow-200 inline-block py-2 px-4 no-underline">{{   $activeTheme   }}</a>
+                      </li>
+                      <li>
+                          <a class="inline-block py-2 px-4 no-underline" href="/about">about</a>
+                      </li>
+                      <li>
+                          <a class="inline-block py-2 px-4 no-underline" href="/admin/articles">articles</a>
                       </li>
                       <li>
                           <a class="inline-block py-2 px-4 no-underline" href="/">home</a>
                       </li>
                       <li>
-                          <a class="inline-block py-2 px-4 no-underline" href="/admin/articles">articles</a>
-                      </li>
-
-                      <li>
-                          <a class="inline-block py-2 px-4 no-underline" href="/about">about</a>
-                      </li>
-                      <li>
-                          <a href="{{   route('theme')   }}" class="text-green-450 inline-block py-2 px-4 no-underline">{{   $activeTheme   }}</a>
+                          <a class="inline-block py-2 px-4 no-underline" href="/registery">register</a>
                       </li>
                   </ul>
           </div>
+
+
 
 
 
@@ -36,7 +37,7 @@
                   <button type="submit" class="w-10/12 h-1/6 mt-4 bg-red-400 hover:bg-red-500 hover:border-red-500 border-red-400 border border-solid font-normal inline-block ml-2.5 my-2 no-underline px-2 rounded-lg text-center text-white">logout</button>
               </form>
           @else
-              <a href="{{ route('login') }}" class="w-1/13 h-1/6 mt-2 bg-green-800 hover:bg-green-900 hover:border-green-900 border-green-800 border border-solid font-normal inline-block no-underline px-3 py-1.5 rounded-lg select-none text-center text-white">login</a>
+              <a href="{{ route('login') }}" class="w-1/13 h-1/6 mt-2 bg-green-500 hover:bg-green-600 hover:border-green-600 border-green-500 border border-solid font-normal inline-block no-underline px-3 py-1.5 rounded-lg select-none text-center text-white">login</a>
           @endif
 
 

@@ -1,6 +1,6 @@
 <!-- farakhani master page -->
 {{--  سایدبار را در صفحه آرتیکل ها مخفی می کند  --}}
-@extends('layouts.master',['hide_sidebar' => true])
+@extends('layouts.'.$activeTheme,['hide_sidebar' => true])
 
 @section('content')
 <div class="w-10/12 mx-auto">
