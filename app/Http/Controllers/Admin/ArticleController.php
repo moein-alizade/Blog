@@ -92,18 +92,18 @@ class ArticleController extends Controller
 
         // 2. upload file
         // انجام دادیم فقط اطلاعات اعتبار سنجی شده را دریافت می کنیم ArticleRequest گام اول: اعتبار سنجی کردن چون قبلا با
-                  $data = $request->validated();
+                $data = $request->validated();
 
 
-        //        نمایش محتوای فایل که بصورت موقتی در سرور ذخیره شده است
-        //        dd($data['image']);
+        //      نمایش محتوای فایل که بصورت موقتی در سرور ذخیره شده است
+        //      dd($data['image']);
 
 
-        //        upload() =  اضافه می کنیم /vendor/laravel/framework/src/illuminate/foundation/helpers.php این تابع را خودمان  توی فایل
-        //        را به تابع آپلود پاس می دهد که در نهایت تابع آپلود مسیر رسیدن به عکس را درون یک رشته بر می کرداند $data['image'] آبجکت
-        //        $data['image'] ذخیره مسیر رسیدن به عکس در این آبجکت
+        //      upload() =  اضافه می کنیم /vendor/laravel/framework/src/illuminate/foundation/helpers.php این تابع را خودمان  توی فایل
+        //      را به تابع آپلود پاس می دهد که در نهایت تابع آپلود مسیر رسیدن به عکس را درون یک رشته بر می کرداند $data['image'] آبجکت
+        //      $data['image'] ذخیره مسیر رسیدن به عکس در این آبجکت
 
-        //        اگه عکسی توی آرایه ی داده هایی که فرستادیم، بود آنگاه تابع آپلود را صدا بزن
+        //      اگه عکسی توی آرایه ی داده هایی که فرستادیم، بود آنگاه تابع آپلود را صدا بزن
                 if(isset($data['image']))
                 {
                     $data['image'] = upload($data['image']);
@@ -113,15 +113,15 @@ class ArticleController extends Controller
 
 
 
-                  // 3. انتقال به دیتابیس
-                  $article = auth()->user()->articles()->create([
-                      'title' => $data['title'],
-                      //          ُStr::slug($title, $separator);       =          "-" توسط دستور رو به رو خط های فاصله تبدیل شود به کاراکتر slug از کارکتر فاصله استفاده شود باید برای  title چون ممکن است درون
-                      'slug' => Str::slug($data['title'], '-'),
-                      'body' => $data['body'],
-                      //         اگه عکسی توی آرایه ی داده هایی که فرستادیم، بود آنگاه آن عکس را به دیتابیس بفرست و در غیر این صورت مقدارش را تهی بگذار
-                      'image' => isset($data['image']) ? $data['image'] : null ,
-                  ]);
+              // 3. انتقال به دیتابیس
+              $article = auth()->user()->articles()->create([
+                  'title' => $data['title'],
+                  //          ُStr::slug($title, $separator);       =          "-" توسط دستور رو به رو خط های فاصله تبدیل شود به کاراکتر slug از کارکتر فاصله استفاده شود باید برای  title چون ممکن است درون
+                  'slug' => Str::slug($data['title'], '-'),
+                  'body' => $data['body'],
+                  //         اگه عکسی توی آرایه ی داده هایی که فرستادیم، بود آنگاه آن عکس را به دیتابیس بفرست و در غیر این صورت مقدارش را تهی بگذار
+                  'image' => isset($data['image']) ? $data['image'] : null ,
+              ]);
 
 
 

@@ -15,13 +15,13 @@
     <link rel="stylesheet" href="/css/app.css">
 </head>
 
-<body>
+<body class="flex flex-col min-h-screen">
 
 <!-- Navigation -->
 @include('layouts.header2')
 
 <!-- Page Content -->
-<div class="{{   isset($full) && $full == true ? '' : 'container sm:px-4' }}">
+<div class="{{   isset($full) && $full == true ? '' : 'container sm:px-4' }} flex-grow">
 
     <div class="flex flex-wrap">
 

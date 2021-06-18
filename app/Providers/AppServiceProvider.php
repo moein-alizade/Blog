@@ -26,8 +26,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // from options table and first record database and accessible by all blades
-        $result = Options::first()->theme;
+        // هنگام کار در محیط تست
+        if (\App::environment('testing'))
+        {
+            $result = 'theme1';
+        }
+        else
+        {
+            // 1. from options table and first record database and accessible by all blades
+            $result = Options::first()->theme;
+        }
+
         View::share('activeTheme',$result);
+
+
     }
 }
