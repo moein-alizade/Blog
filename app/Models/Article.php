@@ -14,10 +14,11 @@ class Article extends Model
     // فیلد های مجاز پر شدن توسط کاربر
     protected  $fillable = ['user_id','title','slug','body','image'];
 
-    //    public function getRouteKeyName(){
-    //        //کار کند route-model-binding به هر فیلدی که ما می خواهیم تا  id تغییر از
-    //        return 'slug';
-    //    }
+    // public function getRouteKeyName(){
+        //کار کند route-model-binding به هر فیلدی که ما می خواهیم تا  id تغییر از
+        // return 'slug';
+    // }
+
 
     public function sluggable(): array
     {
@@ -29,22 +30,22 @@ class Article extends Model
     }
 
 
-    //    بر اساس آرتیکل، دیتا های یوزرش را هم برگرداند
+    // بر اساس آرتیکل، دیتا های یوزرش را هم برگرداند
+    // ایجاد رابطه ای بین مقاله و کاربر
     public function user(){
-
         //  پیدا کند آرتیکلی که این کاربر ایجاد کرده است
-        // را روی آن تعریف کنیم belongsTo هر آرتیکلی متعلق به یک کاربر هست. که می توانیم رابطه
+        // را روی آن تعریف کنیم belongsTo هر آرتیکلی متعلق به یک کاربر هست پس می توانیم رابطه
         return $this->belongsTo(User::class);
     }
 
-
+    // ایجاد رابطه ای بین مقاله و دسته بندی
     public function categories(){
-
         // استفاده بکنیم belongsToMany() استفاده کرد و باید از hasMany() یک آرتیکل تعداد زیادی دسته بندی دارد ولی اینجا چون رابطه ی چند به چند هست نباید از
-        //  Category::class => model Category
+        // Category::class => model Category
         return $this->belongsToMany(\App\Models\Category::class);
     }
 
+    // ایجاد رابطه ای بین مقاله و نظر
     public function comments()
     {
         // است، می نویسیم. اینکار به دلیل است که ما می خواهیم نظرات سطح والد را نمایش دهیم و نیز این نظرات را ذخیره کنیم null شان برابر با  parent_id دراینجا ما همه نظراتی که که مقدار

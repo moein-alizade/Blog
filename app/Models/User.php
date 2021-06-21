@@ -47,16 +47,15 @@ class User extends Authenticatable
 
 
 
-    //    دیتا های آرتیکل های فلان یوزر را بازگردان (رابطه 1 به چند)
+    // دیتا های آرتیکل های فلان یوزر را بازگردان (رابطه یک به چند)
     public function articles()
     {
-
-        //hasMany(namemodel::class,'create_articles_table دقیقا کلید خارجی توی آرتیکل ') => یعنی تعداد زیادی آرتیکل وجود دارد
-        //Article::class => خودمان ازش شی نمی سازیم و اجازه ایجاد کردن یک شی یا کلاس را به هسته لاراول می دهیم
+        // hasMany(namemodel::class,'create_articles_table دقیقا کلید خارجی توی آرتیکل ') => یعنی تعداد زیادی آرتیکل وجود دارد
+        // Article::class => خودمان ازش شی نمی سازیم و اجازه ایجاد کردن یک شی یا کلاس را به هسته لاراول می دهیم
         return $this->hasMany(\App\Models\Article::class);
 
 
-        //    return $this->hasMany(Article::class,'u_i','email');
-        //    متصل کن 'email' را به  'u_i' این فیلد
+        // return $this->hasMany(Article::class,'u_i','email');
+        // متصل کن 'email' را به  'u_i' این فیلد
     }
 }

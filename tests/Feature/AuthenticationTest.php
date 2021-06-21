@@ -34,11 +34,11 @@ class AuthenticationTest extends TestCase
         $response->assertStatus(200);
     }
 
-    // تست دسترسی صفحه درباره ما برای کاربران لاگین نکرده و نیز باید به صفحه لاگین ریدایرگت شود
-    public function test_aboutpage_is_not_accessible_by_unauthenticated_user()
+    // تست دسترسی صفحه ایجاد مقاله برای کاربران لاگین نکرده و نیز باید به صفحه لاگین ریدایرگت شود
+    public function test_create_articles_page_is_not_accessible_by_unauthenticated_user()
     {
         // get() تست باز گردن صفحه درباره ما توسط متد
-        $response = $this->get('/about');
+        $response = $this->get('/admin/articles/create');
 
         // 302 = Found ریدایرکت یا
         $response->assertStatus(302);

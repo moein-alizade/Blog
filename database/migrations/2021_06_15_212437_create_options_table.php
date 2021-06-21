@@ -15,7 +15,7 @@ class CreateOptionsTable extends Migration
     {
         Schema::create('options', function (Blueprint $table) {
             $table->id();
-            // theme1 و 6 کاراکتری و با مقدار پیش فرض  string و از نوع  theme ایجاد ستونی بنام
+            // theme1 و 6 کاراکتری و با مقدار پیش فرض  string و از نوع theme ایجاد ستونی بنام
             $table->string('theme',6)->default('theme1');
             $table->timestamps();
         });

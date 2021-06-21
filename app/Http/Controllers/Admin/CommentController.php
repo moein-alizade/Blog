@@ -12,11 +12,9 @@ use phpDocumentor\Reflection\Types\Nullable;
 
 class CommentController extends Controller
 {
-
     // ذخیره می کنیم morphMany() نظراات خود را توسط رابطه
     public function store(Request $request)
     {
-
         //  validate
         $data = $request->validate([
             'body' => 'required|string',
@@ -36,12 +34,13 @@ class CommentController extends Controller
         return back();
     }
 
+
     // ما نظرات والد و پاسخ مربوط به هر کدام را درون یک جدول یکسان نگهداری می کنیم اما موقعی که نظر والد را ذخیره می کنیم
     // هست store , replyStore است و این تفاوت این دو متد Comment_id است و وقتی پاسخ را می خواهیم ذخیره کنیم، مقدار این فیلد برابر با null برابر  parent_id مقدار فیلد
 
+
     public function replyStore(Request $request)
     {
-
         //  validate
         $data = $request->validate([
             'body' => 'required|string',

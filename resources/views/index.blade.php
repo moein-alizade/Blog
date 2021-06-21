@@ -6,7 +6,7 @@
             {{--  اگه عکس برای مقاله مشخص شده بود و وجود داشت آنگاه همان را بجای تصویر مقاله نشان بده و در غیر این صورت برای عکس مقاله ها از تصویر پیش فرض که خودمان مشخص کردیم را نشان بده        --}}
             <img class="w-full rounded rounded-t" src="{{ isset($article->image) ? asset($article->image) : asset('/image/default.jpeg') }}" alt="Card image cap">
             <div class="flex-auto p-6">
-                {{-- نمایش دادن عنوان آرتیکل--}}
+                {{--    نمایش دادن عنوان آرتیکل    --}}
                 <h2 id="head" class="mb-3">{{ $article->title }}</h2>
                 <p class="mb-0">{{ $article->body }}</p>
                 <a href="/articles/{{ $article->slug }}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded-b-2xl py-1 px-3 my-3 leading-normal no-underline bg-red-300 text-white hover:bg-red-400">Read More &rarr;</a>
@@ -24,7 +24,7 @@
     </div>
 
 
-    <div class="w-1/12 fixed bottom-3.5 {{ isset($activeTheme) && $activeTheme == 'theme1' ? 'right-1' : 'left-1' }}">
+    <div class="w-1/12 fixed bottom-8 {{ isset($activeTheme) && $activeTheme == 'theme1' ? 'right-1' : 'left-1' }}">
         <a href="#mlogo" class="flex {{ isset($activeTheme) && $activeTheme == 'theme1' ? 'flex-row' : 'flex-row-reverse' }}"><img src="/image/top-arrow.png" class="w-1/3 h-full"></a>
     </div>
 

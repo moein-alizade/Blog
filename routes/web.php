@@ -12,7 +12,6 @@
 */
 
 
-
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'home']);
 Route::get('/registery', [\App\Http\Controllers\Auth\UserRegisterController::class, 'index']);
 Route::post('/registery/index', [\App\Http\Controllers\Auth\UserRegisterController::class, 'store'])->name('store');
@@ -24,7 +23,7 @@ Route::get('/articles/{articleSlug}' , [\App\Http\Controllers\Admin\ArticleContr
 
 
 //middleware('auth') =>  احراز هویت کاربر
-Route::get('/about', [\App\Http\Controllers\HomeController::class, 'about'])->middleware('auth');
+Route::get('/about', [\App\Http\Controllers\HomeController::class, 'about']);
 
 
 //name('') => برای این مفید هست که از یک روت چند جا استفاده کردیم و اکنون بخوایم آدرس مسیر اون روت را عوض کنیم دیگه لازم نیست توی همه آنجا هایی که از روت استفاده کردیم، آدرس مسیرش را عوض کنیم
@@ -36,17 +35,17 @@ Route::get('/theme',[\App\Http\Controllers\ThemeController::class, 'show'])->nam
 
 // {} = کرلی برکت or curly bracket    ,  [] = bracket
 
+
 Route::get('/categories/{category:name}' , [\App\Http\Controllers\CategoryController::class, 'show'])->name('category.show');
 
 
 
-//  استفاد کردیم get می توان دریافت کرد چون از متد  get تنها توی روت  دیتا را بصورت
 Route::prefix('admin')->namespace('Admin')->group(function() {
-
+    // استفاد کردیم get می توان دریافت کرد چون از متد  get تنها توی روت  دیتا را بصورت
     // Route::get('/articles' , [ArticleController::class, 'index']);
 
 
-    //نشان دادن فرم
+    // نشان دادن فرم
     // Route::get('/articles/create' , [ArticleController::class, 'create']);
 
 
@@ -55,18 +54,17 @@ Route::prefix('admin')->namespace('Admin')->group(function() {
 
 
     // Route-model-binding => باید اسمی که توی روت تعریف می کنیم، دقیقا همان اسم توی متد در کنترل مربوطه اش باشد
-    //
-    //                    {article} = (id & slug) اسم مدل
-    //                       Route::put('/articles/{article}/edit' , [ArticleController::class, 'update'])
-    //                       public function update(ArticleRequest $request,Article $article)
+    // {article} = (id & slug) اسم مدل
+    // Route::put('/articles/{article}/edit' , [ArticleController::class, 'update'])
+    // public function update(ArticleRequest $request,Article $article)
 
 
-    //edit form
+    // edit form
     // Route::get('/articles/{id}/edit' , [ArticleController::class, 'edit']);
     // Route::get('/articles/{article}/edit' , [ArticleController::class, 'edit']);
 
 
-    // put => باشد و برای ویرایش و آپدیت کردن استفاده می شود method="post"حتما باید
+    // put => باشد و برای ویرایش و آپدیت کردن استفاده می شود method="post" حتما باید
     // Route::put('/articles/{article}/edit' , [ArticleController::class, 'update']);
 
 
@@ -75,15 +73,15 @@ Route::prefix('admin')->namespace('Admin')->group(function() {
     // Route::delete('/articles/{article}' , [ArticleController::class, 'destroy']);
 
 
-    //  خودکار خودش با این دستور ایجاد می کند show تعیین کردیم البته بجز  articles تمام روت هایی که ما مثلا برای
+    // خودکار خودش با این دستور ایجاد می کند show تعیین کردیم البته بجز  articles تمام روت هایی که ما مثلا برای
     Route::resource('articles' , 'ArticleController')->except(['show']);
 
 
-    //only([]) => فقط
+    // only([]) => فقط
     // Route::resource('articles' , 'ArticleController')->only(['destroy']);
 
 
-    //  که برای حذف عکس آرتیکل به هنگام درخواست و کلیک بر علامت ضربدر route-model-binding و به روش get ایجاد روتی از نوع
+    // که برای حذف عکس آرتیکل به هنگام درخواست و کلیک بر علامت ضربدر route-model-binding و به روش get ایجاد روتی از نوع
     Route::get('/articles/remove-image/{article}',[\App\Http\Controllers\Admin\ArticleController::class, 'destroyImage']);
 
 

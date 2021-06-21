@@ -1,10 +1,10 @@
-{{--{{   dd($activeTheme)   }}--}}
-{{--@dd($activeTheme)--}}
+{{--        {{   dd($activeTheme)   }}      --}}
+{{--        @dd($activeTheme)       --}}
 
 {{--  سایدبار را در صفحه آرتیکل ها مخفی می کند  --}}
 @extends('layouts.'.$activeTheme,['hide_sidebar' => true, 'full' => true])
 
-{{--    محتوای آشپزخانه    --}}
+{{--    محتوای مثال آشپزخانه    --}}
 @section('content')
 
 

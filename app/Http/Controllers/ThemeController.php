@@ -18,13 +18,11 @@ class ThemeController extends Controller
     // مشخص کردن تم فعال ما
     public function show()
     {
-
         // toArray() => تبدیل آلجکت به آرایه
 
         // object theme
         //  فعال ما را مشخض می کند، را باز می گرداند theme که توی دیتابیس هست که نهایتا یک ستون که  option هر چه در جدول
         $options = \App\Models\Options::first();
-
 
         // تغییر تم فعالمان توی دیتابیس
         // تغییر دهد و دوباره برگردد به صفحه اصلی theme1 بود آن را به  theme2 تغییر دهد و اگه  theme2 برود و مقدارش را به  option بود آنگاه توی همین دیتابیس  theme1 برابر با  $activeTheme اگه مقدار

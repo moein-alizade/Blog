@@ -50,7 +50,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
         });
 
-        //برایش برگرداند function($value)  صدا زدی، این نتیجه را 'articleSlug' وقتی
+        // برایش برگرداند function($value)  صدا زدی، این نتیجه را 'articleSlug' وقتی
         Route::bind('articleSlug' , function($value) {
             // return Article::findOrFail($value);
             // return Article::where('slug', $value)->first();

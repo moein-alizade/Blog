@@ -14,6 +14,7 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
+        // اگه وارد صفحه ای شدی که نیاز به لاگین کردن کاربر بود ولی انجام نداده بود آنگاه آن کاربر را به صفحه لاگین ریدایرکت کن
         if (! $request->expectsJson()) {
             return route('login');
         }

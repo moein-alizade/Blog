@@ -8,7 +8,7 @@
             <h1>{{ $article->title }}</h1>
         </div>
 
-        {{--     format('%B %d، %Y'); // دی 02، 1391         &   format('%A, %d %B %y'); // جمعه، 23 اسفند 97     &     format('Y/m/d')               --}}
+        {{--     format('%B %d، %Y'); // دی 02، 1391  &   format('%A, %d %B %y'); // جمعه، 23 اسفند 97   &     format('Y/m/d')      --}}
         <div class="text-2xl text-green-600">
             {{ carbonToPersian($article->created_at)->format('Y/m/d')}}
         </div>
@@ -17,7 +17,7 @@
     <!-- Blog Post -->
 
         <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 mb-4">
-            {{--            asset()   =   شروع بشود ازش استفاده می کنیم public هر چیزی که از پوشه ی   --}}
+            {{--  asset()   =   شروع بشود ازش استفاده می کنیم public هر چیزی که از پوشه ی   --}}
             {{--  اگه عکس برای مقاله مشخص شده بود و وجود داشت آنگاه همان را بجای تصویر مقاله نشان بده و در غیر این صورت برای عکس مقاله ها از تصویر پیش فرض که خودمان مشخص کردیم را نشان بده        --}}
             <img class="w-full rounded rounded-t" src="{{ isset($article->image) ? asset($article->image) : asset('/image/default.jpeg') }}" alt="Card image cap">
             <div class="flex-auto p-6">

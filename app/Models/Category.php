@@ -11,11 +11,11 @@ class Category extends Model
     protected $fillable = ['name'];
 
 
-
-    //    با گرفتن دسته بندی، آرتیکل های مرتبط با آن را بر می گرداند
+    // با گرفتن دسته بندی، آرتیکل های مرتبط با آن را بر می گرداند
+    // ایجاد رابطه بین دسته بندی با مقاله
     public function articles(){
-        //        استفاده بکنیم belongsToMany() استفاده کرد و باید از  hasMany() یک دسته بندی تعداد زیادی آرتیکل دارد ولی اینجا چون رابطه ی چند به چند هست نباید از
-        //        Article::class = model Category
+        // استفاده بکنیم belongsToMany() استفاده کرد و باید از  hasMany() یک دسته بندی تعداد زیادی آرتیکل دارد ولی اینجا چون رابطه ی چند به چند هست نباید از
+        // Article::class = model Category
         return $this->belongsToMany(\App\Models\Article::class);
     }
 }

@@ -14,7 +14,7 @@ class ImageForArticlesTable extends Migration
     public function up()
     {
         Schema::table('articles', function (Blueprint $table) {
-            // و می تواند مقدارش خالی باشد  body اضافه کردن یک ستون جدید از نوع رشته و بعداز ستون
+            // و می تواند مقدارش خالی باشد body اضافه کردن یک ستون جدید از نوع رشته و بعداز ستون
             // after() => یعنی بعد از چه ستونی این ستون جدید را ایجاد کن
             $table->string('image')->after('body')->nullable();
         });
